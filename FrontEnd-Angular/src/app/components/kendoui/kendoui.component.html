@@ -1,0 +1,124 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <h1>Choose Theme</h1>
+      <button class="col" kendoButton [toggleable]="false" (click)="demodata()">
+        <span> Insert Demo Data << delete and edit not work </span>
+      </button>
+      <button
+        class="col"
+        kendoButton
+        [toggleable]="false"
+        (click)="setDarkModeTheme()"
+      >
+        <span> Dark Mode Theme </span>
+      </button>
+
+      <button
+        class="col"
+        kendoButton
+        [toggleable]="false"
+        (click)="setLightModeTheme()"
+      >
+        <span> Light Mode Theme </span>
+      </button>
+      <button
+        class="col"
+        kendoButton
+        [toggleable]="false"
+        (click)="setSystemModeTheme()"
+      >
+        <span> Operating System Mode Theme </span>
+      </button>
+    </div>
+    <div class="col-12">
+      <div>
+        <h1>Validata example</h1>
+        <h2>Edit Delete Add works localstorage data</h2>
+        <button
+          class="col"
+          kendoButton
+          [toggleable]="false"
+          (click)="cleargrid()"
+        >
+          <span> Clear Grid Data </span>
+        </button>
+        <button
+          class="col"
+          kendoButton
+          [toggleable]="false"
+          (click)="deletelocal()"
+        >
+          <span>Delete All localstorage Data </span>
+        </button>
+        <kendo-grid
+          [data]="gridData"
+          [height]="410"
+          [sortable]="true"
+          [pageable]="true"
+          [filterable]="true"
+          [pageSize]="10"
+          [skip]="0"
+          [filter]="state.filter!"
+          (dataStateChange)="dataStateChange($event)"
+        >
+          <kendo-grid-column
+            field="ProductID"
+            title="ID"
+            [filterable]="false"
+            [width]="40"
+          >
+          </kendo-grid-column>
+
+          <kendo-grid-command-column
+            *ngIf="buton == true"
+            title="Action"
+            [width]="300"
+          >
+            <ng-template kendoGridCellTemplate let-dataItem>
+              <button kendoButton (click)="edititem(dataItem)">Edit</button>
+              <button kendoButton (click)="deleteitem(dataItem)">Delete</button>
+            </ng-template>
+          </kendo-grid-command-column>
+          <kendo-grid-column field="ProductName" title="Name" [width]="250">
+          </kendo-grid-column>
+          <kendo-grid-column field="Category.CategoryName" title="Category">
+          </kendo-grid-column>
+          <kendo-grid-column
+            field="UnitPrice"
+            title="Price"
+            filter="numeric"
+            [width]="80"
+          >
+          </kendo-grid-column>
+          <kendo-grid-column
+            field="UnitsInStock"
+            title="In stock"
+            filter="numeric"
+            [width]="80"
+          >
+          </kendo-grid-column>
+          <kendo-grid-column
+            field="Discontinued"
+            title="Discontinued"
+            filter="boolean"
+            [width]="120"
+          >
+            <ng-template kendoGridCellTemplate let-dataItem>
+              <input
+                type="checkbox"
+                [checked]="dataItem.Discontinued"
+                enabled
+              />
+            </ng-template>
+          </kendo-grid-column>
+        </kendo-grid>
+      </div>
+    </div>
+    <app-task
+      [description]="description"
+      [title]="title"
+      (newItemEvent)="reload()"
+    ></app-task>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+@import "./variables.scss";
+@import "~bootstrap/dist/css/bootstrap.css";
+
+body {
+  background-color: #000000;
+  color: #ffffff;
+}
+.bg{
+  background-image: url(/assets/bg.jpg);
+}
+body.theme-alternate {
+  background-color: #ffffff;
+  color: #000000;
+}
+.userlogin{
+  width: 250px;
+  margin-left: auto;
+  padding: 20px;
+  border: 2px solid #bfbfbf;
+  box-shadow: 5px 10px #8888883b;
+  margin-right: auto;
+  border-radius: 20px;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
